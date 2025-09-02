@@ -1,6 +1,3 @@
-from operator import index
-
-
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         unique = set(s)
