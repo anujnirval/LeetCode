@@ -1,23 +1,23 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        unique = set(s)
         sub = set()
-        difSub = []
+        maxLen = 0
         for i in range(len(s)):
             for j in range(i, len(s)):
                 if s[j] not in sub:
                     sub.add(s[j])
                 else:
-                    difSub.append(len(sub))
+                    if len(sub) > maxLen:
+                        maxLen = len(sub)
                     sub = set()
                     break
+        maxLen = max(maxLen, len(sub))
+        sub = set()
 
-        if len(unique) == 0 or len(unique) == 1:
-            return len(unique)
+        return maxLen
 
-        return max(difSub)
 
 if __name__ == '__main__':
-    s = "abcabcbb"
+    s = " "
     solution = Solution()
     print(solution.lengthOfLongestSubstring(s))
